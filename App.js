@@ -13,6 +13,7 @@ import ICON from 'react-native-vector-icons/MaterialIcons';
 const colors = {primary: '#1f145c', white: '#fff'};
 
 const App = () => {
+  const [textInput, setTextInput] = useState("")
   const [todos, setTodos] = useState([
     {id: 1, task: 'First todo', completed: true},
     {id: 2, task: 'Second todo', completed: false},
@@ -44,6 +45,9 @@ const App = () => {
       </View>
     );
   };
+  const addTodo = () => {
+
+  }
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: colors.white}}>
       <View style={styles.header}>
@@ -60,7 +64,7 @@ const App = () => {
       />
       <View style={styles.footer}>
         <View style={styles.inputContainer}>
-          <TextInput placeholder="Add Todo"></TextInput>
+          <TextInput placeholder="Add Todo" value={textInput} onChangeText={(text) => setTextInput(text)}></TextInput>
         </View>
         <TouchableOpacity>
           <View style={styles.iconContainer}>

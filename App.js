@@ -74,13 +74,23 @@ const App = () => {
     const newTodos = todos.filter(item => item.id != todoId);
     setTodos(newTodos);
   } 
+  const clearTodos = () => {
+    Alert.alert("Confirm", "Are you sure you would like to clear all todos?", [{
+      text: "Yes",
+      onPress: () => setTodos([]), 
+    },
+    {
+      text: "No"
+    },
+  ])
+  }
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: colors.white}}>
       <View style={styles.header}>
         <Text style={{fontWeight: 'bold', fontSize: 20, color: colors.primary}}>
           TODO APP
         </Text>
-        <ICON name="delete" size={25} color="red"></ICON>
+        <ICON name="delete" size={25} color="red" onPress={clearTodos}></ICON>
       </View>
       <FlatList
         showsVerticalScrollIndicator={false}

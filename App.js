@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, {useState, useEffect} from 'react';
 
 import {
   SafeAreaView,
@@ -10,7 +11,6 @@ import {
   FlatList,
   Alert,
 } from 'react-native';
-import { createIconSetFromFontello } from 'react-native-vector-icons';
 import ICON from 'react-native-vector-icons/MaterialIcons';
 const colors = {primary: '#1f145c', white: '#fff'};
 
@@ -20,6 +20,12 @@ const App = () => {
     {id: 1, task: 'First todo', completed: true},
     {id: 2, task: 'Second todo', completed: false},
   ]);
+  useEffect(() => {
+    getTodosFromDevice()
+  }, [])
+  useEffect(() => {
+    saveTodosToDevice();
+  }, [todos])
   const ListItem = ({todo}) => {
     return (
       <View style={styles.listItem}>
@@ -84,6 +90,29 @@ const App = () => {
     },
   ])
   }
+  const getTodosFromDevice = async () => {
+    try{
+      const todos = await AsyncStorage.getItem('saved-todos');
+      if(todos !== null){
+        let parsedTodos = (JSON.parse(todos));
+        setTodos(parsedTodos);
+      }
+    }
+    catch (err){
+      console.log(err);
+    }
+  }
+
+  const saveTodosToDevice = async () => {
+    try {
+      const stringifyTodos = JSON.stringify(todos);
+      await AsyncStorage.setItem('saved-todos', stringifyTodos);
+    }
+    catch (err) {
+      //Do something with error
+      console.log(err)
+    }
+  } 
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: colors.white}}>
       <View style={styles.header}>
@@ -142,7 +171,7 @@ const styles = StyleSheet.create({
   footer: {
     position: 'absolute',
     bottom: 0,
-    color: colors.white,
+    backgroundColor: colors.white,
     width: '100%',
     flexDirection: 'row',
     alignItems: 'center',

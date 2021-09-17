@@ -18,10 +18,22 @@ const App = () => {
     {id: 2, task: 'Second todo', completed: false},
   ]);
   const ListItem = ({todo}) => {
-    return <View style={styles.listItem}>
-      <View><Text>{todo?.task}</Text></View>
-    </View>
-  }
+    return (
+      <View style={styles.listItem}>
+        <View>
+          <Text
+            style={{
+              fontWeight: 'bold',
+              fontSize: 15,
+              color: colors.primary,
+              textDecorationLine: todo?.completed?'line-through':'none' 
+            }}>
+            {todo?.task}
+          </Text>
+        </View>
+      </View>
+    );
+  };
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: colors.white}}>
       <View style={styles.header}>
@@ -30,11 +42,12 @@ const App = () => {
         </Text>
         <ICON name="delete" size={25} color="red"></ICON>
       </View>
-      <FlatList 
-      showsVerticalScrollIndicator={false}
-      data={todos} 
-      contentContainerStyle={{padding: 20, paddingBottom: 100}}
-      renderItem={({item}) => <ListItem todo={item} />} />
+      <FlatList
+        showsVerticalScrollIndicator={false}
+        data={todos}
+        contentContainerStyle={{padding: 20, paddingBottom: 100}}
+        renderItem={({item}) => <ListItem todo={item} />}
+      />
       <View style={styles.footer}>
         <View style={styles.inputContainer}>
           <TextInput placeholder="Add Todo"></TextInput>

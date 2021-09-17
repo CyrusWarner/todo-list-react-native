@@ -46,7 +46,12 @@ const App = () => {
     );
   };
   const addTodo = () => {
-
+    let newTodo = {
+      id:Math.random(),
+      task: textInput,
+      completed: false,
+    };
+    setTodos([...todos, newTodo]);
   }
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: colors.white}}>
@@ -66,7 +71,7 @@ const App = () => {
         <View style={styles.inputContainer}>
           <TextInput placeholder="Add Todo" value={textInput} onChangeText={(text) => setTextInput(text)}></TextInput>
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={addTodo}>
           <View style={styles.iconContainer}>
             <ICON name="add" color={colors.white} size={30}></ICON>
           </View>
@@ -84,7 +89,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginLeft: 5,
-    borderRadius: 3
+    borderRadius: 3,
   },
   listItem: {
     padding: 20,

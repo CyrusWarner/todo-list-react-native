@@ -31,8 +31,15 @@ const App = () => {
             {todo?.task}
           </Text>
         </View>
-        <TouchableOpacity style={[styles.actionIcon]}>
-          <ICON name="done" size={20} color={colors.white}></ICON>
+        {
+          !todo?.completed && (
+            <TouchableOpacity style={[styles.actionIcon]}>
+            <ICON name="done" size={20} color={colors.white}></ICON>
+          </TouchableOpacity>
+          )
+        }
+        <TouchableOpacity style={[styles.actionIcon, {backgroundColor: 'red'}]}>
+          <ICON name="delete" size={20} color={colors.white}></ICON>
         </TouchableOpacity>
       </View>
     );

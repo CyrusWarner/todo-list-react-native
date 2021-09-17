@@ -20,7 +20,7 @@ const App = () => {
   const ListItem = ({todo}) => {
     return (
       <View style={styles.listItem}>
-        <View>
+        <View style={{flex: 1}}>
           <Text
             style={{
               fontWeight: 'bold',
@@ -31,6 +31,9 @@ const App = () => {
             {todo?.task}
           </Text>
         </View>
+        <TouchableOpacity style={[styles.actionIcon]}>
+          <ICON name="done" size={20} color={colors.white}></ICON>
+        </TouchableOpacity>
       </View>
     );
   };
@@ -63,6 +66,15 @@ const App = () => {
 };
 
 const styles = StyleSheet.create({
+  actionIcon: {
+    height: 25,
+    width: 25,
+    backgroundColor: 'green',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: 5,
+    borderRadius: 3
+  },
   listItem: {
     padding: 20,
     backgroundColor: colors.white,

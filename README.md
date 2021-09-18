@@ -10,8 +10,6 @@ Creates a mobile interface for users looking to track what tasks they have for t
    - [Future Tasks](#future-tasks)
 - [Technologies](#technologies)
 - [Bugs](#bugs)
-- [Demos](#demos)
-- [Sources](#sources)
 
 ---
 ## Project Status :green_circle:

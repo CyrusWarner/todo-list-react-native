@@ -19,10 +19,14 @@ Creates a mobile interface for users looking to track what tasks they have for t
 - Create a modal to allow users to edit a task
 
 ### Task List: 
-:heavy_check_mark: Implement ability to add a new task  
+:heavy_check_mark: Implement ability to add a new task 
+
 :heavy_check_mark: Implement functionality for deleting a task
+
 :heavy_check_mark: Adding a basic list to display for users
+
 :heavy_check_mark: Added a modal for updating a task 
+
 :heavy_check_mark: Added functionality for marking a task as complete 
 
 <!--- 
@@ -35,6 +39,7 @@ BUGGED =    :warning:
 
 ### Future Tasks  
 :x: Add ability to change between light and dark mode 
+
 :x: Add Functionality for adding a review to the mobile app
 
 ---

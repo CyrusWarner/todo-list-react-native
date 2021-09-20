@@ -48,11 +48,11 @@ BUGGED =    :warning:
 - Android Studio
 - React Native
 - Git / GitHub
+- React-Native-Vector-Icons
 
 ## Knowledge Used
 - CSS
 - React
-- Functional Components
 
 ---
 ## Design
